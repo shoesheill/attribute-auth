@@ -1,0 +1,171 @@
+{
+  "info": {
+    "name": "DynamicAuth",
+    "_postman_id": "a6f3f1b2-9cf0-4f8b-9d77-000000000001",
+    "description": "Postman collection for dynamic hierarchical authorization sample",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"Username\": \"nepal_head\", \"Password\": \"pass\"}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Resources",
+      "item": [
+        {
+          "name": "Get Resource by Id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/resources/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "resources",
+                "{{id}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Resource",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/resources",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "resources"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"title\": \"My Owned Report\", \"regionId\": \"{{regionId}}\", \"locationId\": \"{{locationId}}\"}"
+            }
+          }
+        },
+        {
+          "name": "Update Resource",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/resources/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "resources",
+                "{{id}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"title\": \"Updated Title\"}"
+            }
+          }
+        },
+        {
+          "name": "Delete Resource",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/resources/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "resources",
+                "{{id}}"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000"
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "id",
+      "value": ""
+    },
+    {
+      "key": "regionId",
+      "value": ""
+    },
+    {
+      "key": "locationId",
+      "value": ""
+    }
+  ]
+}
